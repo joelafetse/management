@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: db
+    environment:
+      - SA_USERNAME=sa
+      - SA_PASSWORD=SuperP4ss@word!
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - my-volume:/var/opt/mssql
+      
+volumes:
+  my-volume:  

@@ -1,0 +1,67 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Management API
+servers:
+  - url: http://localhost:8080
+paths:
+  /members:
+    get:
+      summary: Get all the members
+      operationId: members
+      tags:
+        - members
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Member"
+        '500':
+          description: Something bad happened
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Member:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - isActive
+        - position
+        - phoneNumber
+        - emailAddress
+        - homeAddress
+        - remarks
+      properties:
+        firstName: 
+          type: string
+        lastName:
+          type: string
+        isActive:
+          type: boolean
+        position:
+          type: string
+        phoneNumber:
+          type: string
+        emailAddress:
+          type: string
+        homeAddress:
+          type: string
+        remarks: 
+          type: string        
+
+    Error:            # Can be referenced as '#/components/schemas/Error'
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string          
