@@ -3,14 +3,14 @@ info:
   version: 1.0.0
   title: Management API
 servers:
-  - url: http://localhost:8080
+  - url: http://localhost:8080/management
 paths:
   /members:
     get:
       summary: Get all the members
-      operationId: members
+      operationId: GetMembers
       tags:
-        - members
+        - member
       responses:
         '200':
           description: Success
@@ -19,7 +19,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Member"
+                  $ref: "#/components/schemas/MemberDto"
         '500':
           description: Something bad happened
           content: 
@@ -29,12 +29,14 @@ paths:
 
 components:
   schemas:
-    Member:
+    MemberDto:
       type: object
       required:
         - firstName
         - lastName
+        - gender
         - isActive
+        - nationality
         - position
         - phoneNumber
         - emailAddress
@@ -45,9 +47,13 @@ components:
           type: string
         lastName:
           type: string
+        gender:
+          type: string  
         isActive:
           type: boolean
-        position:
+        nationality:
+          type: string  
+        title:
           type: string
         phoneNumber:
           type: string

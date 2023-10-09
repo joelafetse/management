@@ -1,4 +1,4 @@
-// generates the spring controller interfaces from openapi spec in src/main/resources/service.yaml
+// generates the spring controller interfaces from openapi spec in src/main/resources/management.yaml
 openApiGenerate {
    generatorName = "spring"
    inputSpec = "$projectDir/src/main/resources/swagger/management.yaml"
